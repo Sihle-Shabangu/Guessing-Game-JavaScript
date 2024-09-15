@@ -46,9 +46,46 @@
     </div>
 
     <script>
+        // generate random number
+        let guessNumber = Math.floor(Math.random() * 100) + 1;
+        // set game parameters / reset
+        let guesses = 10;
+        let high = 100;
+        let low = 1;
+        let userGuesses = [];
+        let button = document.querySelector(".guessSubmit").onclick = () => {
+            var userGuess = document.getElementById("guessField").value;
+            
+            if (guesses == 0){
+                var guessess = document.querySelector(".guesses").innerHTML = "Out of guesses";
+                console.log("Out of Guesses");
+                // generate random number
+                guessNumber = Math.floor(Math.random() * 100) + 1;
+                // set game parameters / reset
+                guesses = 11;
+                // reset
+            } else{
+                var guessess = document.querySelector(".guesses").innerHTML = guesses;
+                // var latest = document.querySelector(".lastResult").innerHTML = userGuess;
+                if (userGuess > guessNumber){
+                    var lowOrHigh = document.querySelector(".lowOrHi").innerHTML = "Low";
+                } else if (userGuess < guessNumber){
+                    var lowOrHigh = document.querySelector(".lowOrHi").innerHTML = "High";
+                } else{
+                    var lowOrHigh = document.querySelector(".lowOrHi").innerHTML = "🚩You Got It!🚩 Click Submit to Reset.";
+                    // generate random number
+                    guessNumber = Math.floor(Math.random() * 100) + 1;
+                    // set game parameters / reset
+                    guesses = 11;
+                    // reset
+                }
+                console.log(guessNumber + " is the answer.");
+                console.log(userGuess + " is what the user guessed.");
+                console.log(guesses + " is the number of guesses left.");
+                guesses --;
+            }
 
-      // Your JavaScript goes here
-
+        };    
     </script>
   </body>
 </html>
